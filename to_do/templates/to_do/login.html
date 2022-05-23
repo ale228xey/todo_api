@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="header-bar">
+        <h1>Login</h1>
+    </div>
+    <div class="card-body">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input class="button" type="submit" value="Login">
+        </form>
+        <p>
+            Don't have an account? <a href="{% url 'register' %}">Register</a>
+        </p>
+        <div class="button">
+            <a style="text-decoration: none" href="/login/vk-oauth2">
+            <i class="fa-brands fa-vk"></i> Войти с VK</a>
+        </div>
+        <br>
+        <div class="button">
+            <a style="text-decoration: none" href="{% url 'social:begin' 'google-oauth2' %}">
+            <i class="fab fa-google" aria-hidden="true"></i> Войти с Google</a>
+        </div>
+        <br>
+        <div class="button">
+            <a style="text-decoration: none" href="{% url 'social:begin' 'github' %}" >
+            <i class="fa-brands fa-github"></i> Войти с GitHub</a>
+        </div>
+
+    </div>
+{% endblock content %}
